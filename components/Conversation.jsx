@@ -19,16 +19,16 @@ const Conversation = () => {
 							className="min-h-12 resize-none border-0 p-3 shadow-none focus-visible:ring-0 flex-grow"
 						/>
 						<Button
-							type="submit"
-							size="sm"
 							className="bg-accent-vermilion hover:bg-accent-secondBlack"
+							size="icon"
 						>
-							<TbCubeSend className="h-[100%] w-[100%]" />
+							<TbCubeSend className="h-full w-full"/>
 						</Button>
 					</div>
 				</form>
 			</div>
 		</main>
+
 	);
 };
 

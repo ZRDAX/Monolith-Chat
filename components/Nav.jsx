@@ -14,31 +14,35 @@ const Nav = () => {
 	return (
 		<div className="flex h-full max-h-screen flex-col gap-2">
 			{/* TOP/SIDEBAR */}
+
+			<div className="text-center text-accent-branco mt-6 fs-6 fw-bold">C H A T S</div>
+
 			<div className="flex h-14 items-center px-4 lg:h-[60px] lg:px-6">
+
 				{/* LOGO */}
 				<Link
 					href="/"
 					className="text-accent-branco flex items-center gap-2 font-semibold"
 				>
-					<BsLayoutTextSidebar className=" h-6 w-6" />
+					<BsLayoutTextSidebar className="h-6 w-6" />
 				</Link>
 
-				<h2 className="text-center">CHATS</h2>
-
 				{/* PESQUISAR */}
-				<div className="ml-auto h-8 w-8">
-					<form>
-						<div className="relative">
-							<Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+				<div className="ml-4 flex-grow flex items-center">
+					<form className="w-full">
+						<div className="relative h-full">
+							<Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-6 w-6 text-muted-foreground" />
 							<Input
 								type="search"
-								placeholder="Search products..."
-								className="w-full appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3"
+								placeholder="Search..."
+								className="h-full w-full bg-background pl-12 pr-4 shadow-none"
 							/>
 						</div>
 					</form>
 				</div>
 			</div>
+
+
 
 			{/* Nav */}
 			<div className="flex-1">
@@ -97,7 +101,7 @@ const Nav = () => {
 							monolitch-chat
 						</CardTitle>
 						<CardDescription className="text-center text-accent-secondWhite">
-							Siga as regras do chat Monolitch não tolerará.
+							Siga as regras do chat. A Monolitch não tolerará.
 						</CardDescription>
 					</CardHeader>
 				</Card>

@@ -16,18 +16,18 @@ const Welcome = () => {
 			</header>
 
 			{/* CONTENT */}
-			<div className="flex flex-col lg:flex-row flex-grow pt-5 lg:pt-2">
+			<div className="flex flex-col lg:flex-row flex-grow pt-5 lg:pt-2 h-full">
 				{/* IMAGE CONTAINER */}
-				<div className="pl-2 ml-8 mb-10  h-1/2 lg:h-full lg:w-1/2 relative bg-white flex items-center justify-center rounded-lg ">
-					<div className="flex flex-row">
+				<div className="pl-2 lg:ml-8 mb-10 h-full lg:w-1/2 relative bg-white flex items-center justify-center rounded-lg gap-5">
+					<div className="flex flex-col sm:flex-row py-4">
 						<Image
 							src="/assets/pessoa.svg"
 							alt="Pessoa"
-							width="300"
-							height="300"
+							width="260"
+							height="260"
 							className="object-contain justify-start"
 						/>
-						<div className="flex flex-col gap-y-12 items-end text-right text-7xl text-accent-vermilion">
+						<div className="flex flex-col lg:items-center gap-y-12 lg:items-center text-6xl text-accent-vermilion">
 							<h3>CHATS</h3>
 							<h3>CHATS</h3>
 							<h3>CHATS</h3>
@@ -38,13 +38,13 @@ const Welcome = () => {
 				{/* TEXT CONTAINER */}
 				<div className="h-1/2 lg:h-full lg:w-1/2 flex flex-col gap-8 items-center justify-center px-2 sm:px-6 md:px-8 lg:px-16 xl:px-28 text-gray-50">
 					{/* TITLE */}
-					<h2 className="text-4xl md:text-5xl font-bold">
+					<h2 className="sm:text-5xl font-bold">
 						CALLED ------- <br />
 						ME ----- SSAGE
 					</h2>
 
 					{/* DESC */}
-					<p className="md:text-xs text-justify">
+					<p className="text-xs text-justify w-96">
 						A MONOLITCH É UMA PLATAFORMA DE MENSAGENS PARA VOCÊ SE CONECTAR COM
 						PESSOAS AO SEU REDOR E COMPARTILHAR SUAS IDEIAS, VIVÊNCIAS E
 						REUNIÕES. TENHA UMA CONEXÃO...
@@ -67,14 +67,14 @@ const Welcome = () => {
 
 			{/* footer */}
 			<footer className="flex flex-row justify-between p-7 text-white">
-				<IoGlobeOutline className="text-accent-vermilion" />
+				<IoGlobeOutline className="text-accent-vermilion h-9 w-9" />
 				<p className="text-4xl font-bold flex flex-row text-accent-bege">
 					<span>
 						<IoIosRadio />
 					</span>
 					UVB 76
 				</p>
-				<IoGlobeOutline className="text-accent-vermilion" />
+				<IoGlobeOutline className="text-accent-vermilion h-9 w-9"/>
 			</footer>
 		</div>
 	);
