@@ -43,11 +43,19 @@ const Chats = () => {
 							</Button>
 						</DropdownMenuTrigger>
 						<DropdownMenuContent align="end">
-							<DropdownMenuLabel className="text-accent-cinzaAcizentado">Minha Conta</DropdownMenuLabel>
+							<DropdownMenuLabel className="text-accent-cinzaAcizentado">
+								Minha Conta
+							</DropdownMenuLabel>
 							<DropdownMenuSeparator />
-							<DropdownMenuItem className="text-accent-cinzaAcizentado">Settings</DropdownMenuItem>
+							<DropdownMenuItem className="text-accent-cinzaAcizentado">
+								Settings
+							</DropdownMenuItem>
 							<DropdownMenuSeparator />
-							<DropdownMenuItem className="text-accent-vermilion">Logout</DropdownMenuItem>
+							<Link href="/">
+								<DropdownMenuItem className="text-accent-vermilion">
+									Logout
+								</DropdownMenuItem>
+							</Link>
 						</DropdownMenuContent>
 					</DropdownMenu>
 				</header>

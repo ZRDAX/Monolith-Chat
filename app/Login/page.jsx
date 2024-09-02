@@ -10,7 +10,7 @@ const Login = () => {
 		<div className="w-full lg:grid lg:min-h-[300px] lg:grid-cols-2 xl:min-h-[300px]">
 			<div className="hidden bg-muted lg:block">
 				<div className="flex items-center h-screen w-full rounded-lg bg-accent-bege">
-					<TbMessages className="h-full w-full text-accent-light"/>
+					<TbMessages className="h-full	 w-full text-accent-branco"/>
 				</div>
 			</div>
 

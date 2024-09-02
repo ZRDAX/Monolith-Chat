@@ -27,7 +27,7 @@ const Welcome = () => {
 							height="260"
 							className="object-contain justify-start"
 						/>
-						<div className="flex flex-col lg:items-center gap-y-12 lg:items-center text-6xl text-accent-vermilion">
+						<div className="flex flex-col gap-y-12 lg:items-center text-6xl text-accent-vermilion">
 							<h3>CHATS</h3>
 							<h3>CHATS</h3>
 							<h3>CHATS</h3>

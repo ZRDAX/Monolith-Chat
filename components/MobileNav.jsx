@@ -38,31 +38,33 @@ const MobileNav = () => {
 				side="left"
 				className="flex flex-col bg-accent-cinzaAcizentado"
 			>
-				<div className="text-center text-accent-branco mt-6 fs-6 fw-bold">C H A T S</div>
-				<div className="flex h-14 items-center px-4 lg:h-[60px] lg:px-6">
-				{/* LOGO */}
-				<Link
-					href="/"
-					className="text-accent-branco flex items-center gap-2 font-semibold"
-				>
-					<BsLayoutTextSidebar className="h-6 w-6" />
-				</Link>
-
-				{/* PESQUISAR */}
-				<div className="ml-4 flex-grow flex items-center">
-					<form className="w-full">
-						<div className="relative h-full">
-							<Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-6 w-6 text-muted-foreground" />
-							<Input
-								type="search"
-								placeholder="Search..."
-								className="h-full w-full bg-background pl-12 pr-4 shadow-none"
-							/>
-						</div>
-					</form>
+				<div className="text-center text-accent-branco mt-6 fs-6 fw-bold">
+					C H A T S
 				</div>
-			</div>
-			
+				<div className="flex h-14 items-center px-4 lg:h-[60px] lg:px-6">
+					{/* LOGO */}
+					<Link
+						href="/"
+						className="text-accent-branco flex items-center gap-2 font-semibold"
+					>
+						<BsLayoutTextSidebar className="h-6 w-6" />
+					</Link>
+
+					{/* PESQUISAR */}
+					<div className="ml-4 flex-grow flex items-center">
+						<form className="w-full">
+							<div className="relative h-full">
+								<Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-6 w-6 text-muted-foreground" />
+								<Input
+									type="search"
+									placeholder="Search..."
+									className="h-full w-full bg-background pl-12 pr-4 shadow-none"
+								/>
+							</div>
+						</form>
+					</div>
+				</div>
+
 				<nav className="grid gap-2 text-lg font-medium">
 					<Link
 						href="#"

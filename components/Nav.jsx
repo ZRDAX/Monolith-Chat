@@ -15,18 +15,11 @@ const Nav = () => {
 		<div className="flex h-full max-h-screen flex-col gap-2">
 			{/* TOP/SIDEBAR */}
 
-			<div className="text-center text-accent-branco mt-6 fs-6 fw-bold">C H A T S</div>
+			<div className="text-center text-accent-branco mt-6 fs-6 fw-bold">
+				C H A T S
+			</div>
 
 			<div className="flex h-14 items-center px-4 lg:h-[60px] lg:px-6">
-
-				{/* LOGO */}
-				<Link
-					href="/"
-					className="text-accent-branco flex items-center gap-2 font-semibold"
-				>
-					<BsLayoutTextSidebar className="h-6 w-6" />
-				</Link>
-
 				{/* PESQUISAR */}
 				<div className="ml-4 flex-grow flex items-center">
 					<form className="w-full">
@@ -41,8 +34,6 @@ const Nav = () => {
 					</form>
 				</div>
 			</div>
-
-
 
 			{/* Nav */}
 			<div className="flex-1">
