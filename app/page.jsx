@@ -1,83 +1,78 @@
+import { Button } from "@/components/ui/button";
+import { Globe, Radio } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { IoIosRadio } from "react-icons/io";
-import { IoGlobeOutline } from "react-icons/io5";
-
-import { Button } from "@/components/ui/button";
-
-const Welcome = () => {
+export default function Page() {
 	return (
-		<div className="h-screen flex flex-col  bg-primary bg-cover bg-hero-noise relative">
-			{/* HEADER */}
-			<header className="flex flex-row justify-between w-full p-7 text-white top-0">
-				<h1 className="text-4xl font-bold">MONOLITCH</h1>
-				<h2 className="text-4xl font-bold text-accent-vermilion">001</h2>
+		<div className="min-h-screen flex flex-col bg-zinc-900 bg-hero-noise relative">
+			{/* Header */}
+			<header className="flex justify-between items-center w-full p-7">
+				<h1 className="text-7xl font-bold text-white">MONOLITCH</h1>
+				<span className="text-4xl font-bold text-accent-vermilion xl:text-center">001</span>
 			</header>
 
-			{/* CONTENT */}
-			<div className="flex flex-col lg:flex-row flex-grow pt-5 lg:pt-2 h-full">
-				{/* IMAGE CONTAINER */}
-				<div className="pl-2 lg:ml-8 mb-10 h-full lg:w-1/2 relative bg-white flex items-center justify-center rounded-lg gap-5">
-					<div className="flex flex-col sm:flex-row py-4">
-						<Image
-							src="/assets/pessoa.svg"
-							alt="Pessoa"
-							width="260"
-							height="260"
-							className="object-contain justify-start"
-						/>
-						<div className="flex flex-col gap-y-12 lg:items-center text-6xl text-accent-vermilion">
-							<h3>CHATS</h3>
-							<h3>CHATS</h3>
-							<h3>CHATS</h3>
+			{/* Main Content */}
+			<main className="flex-1 flex flex-col lg:flex-row gap-8 p-4 md:p-8">
+				{/* Left Section - Image Card */}
+				<div className="w-full lg:w-1/2">
+					<div className="bg-white rounded-lg p-6 h-full flex items-center justify-center">
+						<div className="flex flex-col sm:flex-row items-center gap-8">
+							<Image
+								src="/assets/pessoa.svg"
+								alt="Profile"
+								width={260}
+								height={260}
+								className="object-contain"
+								priority
+							/>
+							<div className="flex flex-col gap-8">
+								{[1, 2, 3].map((_, i) => (
+									<span
+										key={i}
+										className="text-5xl lg:text-6xl font-bold text-[#C15A4E] tracking-wider"
+										style={{ WebkitTextStroke: "1px #C15A4E" }}
+									>
+										CHAT
+									</span>
+								))}
+							</div>
 						</div>
 					</div>
 				</div>
 
-				{/* TEXT CONTAINER */}
-				<div className="h-1/2 lg:h-full lg:w-1/2 flex flex-col gap-8 items-center justify-center px-2 sm:px-6 md:px-8 lg:px-16 xl:px-28 text-gray-50">
-					{/* TITLE */}
-					<h2 className="sm:text-5xl font-bold">
+				{/* Right Section - Text Content */}
+				<div className="w-full lg:w-1/2 flex flex-col justify-center gap-8 px-4 lg:px-16">
+					<h2 className="text-3xl sm:text-5xl font-bold text-white leading-relaxed text-">
 						CALLED ------- <br />
 						ME ----- SSAGE
 					</h2>
 
-					{/* DESC */}
-					<p className="text-xs text-justify w-96">
+					<p className="text-xs text-white max-w-md text-justify">
 						A MONOLITCH É UMA PLATAFORMA DE MENSAGENS PARA VOCÊ SE CONECTAR COM
 						PESSOAS AO SEU REDOR E COMPARTILHAR SUAS IDEIAS, VIVÊNCIAS E
-						REUNIÕES. TENHA UMA CONEXÃO...
+						REUNIÕES TENHA UMA CONEXÃO...
 					</p>
 
-					{/* BUTTONS */}
-					<div className="w-full flex gap-4 justify-center">
-						<Link href="/Login">
-							<Button
-								variant=""
-								size="lg"
-								className="uppercase flex items-center gap-2 w-96 bg-accent-vermilion"
-							>
-								<span>JOIN</span>
-							</Button>
-						</Link>
-					</div>
+					<Button
+						className="w-full max-w-md bg-[#C15A4E] hover:bg-[#C15A4E]/90 text-white"
+						size="lg"
+						asChild
+					>
+						<Link href="/Login">JOIN</Link>
+					</Button>
 				</div>
-			</div>
+			</main>
 
-			{/* footer */}
-			<footer className="flex flex-row justify-between p-7 text-white">
-				<IoGlobeOutline className="text-accent-vermilion h-9 w-9" />
-				<p className="text-4xl font-bold flex flex-row text-accent-bege">
-					<span>
-						<IoIosRadio />
-					</span>
-					UVB 76
-				</p>
-				<IoGlobeOutline className="text-accent-vermilion h-9 w-9"/>
+			{/* Footer */}
+			<footer className="flex justify-between items-center p-7">
+				<Globe className="h-8 w-8 text-[#C15A4E]" />
+				<div className="flex items-center gap-2 text-[#D4B59E]">
+					<Radio className="h-8 w-8" />
+					<span className="text-2xl font-bold">UVB 76</span>
+				</div>
+				<Globe className="h-8 w-8 text-[#C15A4E]" />
 			</footer>
 		</div>
 	);
-};
-
-export default Welcome;
+}

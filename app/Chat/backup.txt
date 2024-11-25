@@ -15,7 +15,6 @@ const ChatPage = () => {
   const [messages, setMessages] = useState([]); // Mensagens da sala selecionada
   const [isSidebarHidden, setIsSidebarHidden] = useState(false); // Controle da visibilidade da sidebar
 
-  // Carrega as salas disponíveis ao montar o componente
   useEffect(() => {
     const fetchNamespaces = async () => {
       try {
@@ -48,46 +47,28 @@ const ChatPage = () => {
     fetchNamespaces();
   }, []);
 
-  // Seleciona uma sala e carrega as mensagens
   const handleSelectNamespace = async (namespace) => {
     setSelectedNamespace(namespace);
     try {
       const mensagens = await api.listarMensagens(namespace.idSala, Date.now());
-      console.log("Mensagens carregadas:", mensagens);
-
-      const formattedMessages = mensagens.map((msg) => ({
-        timestamp: msg.timestamp,
-        nick: msg.nick || "Sistema",
-        msg: msg.msg || "Ação realizada.",
-      }));
-
-      setMessages(formattedMessages);
+      setMessages(mensagens || []);
     } catch (error) {
       console.error("Erro ao carregar mensagens:", error.message);
     }
   };
 
-  // Envia uma mensagem para a sala selecionada
   const handleSendMessage = async () => {
-    if (!message.trim() || !selectedNamespace) {
-      console.warn("Mensagem vazia ou nenhuma sala selecionada.");
-      return;
-    }
+    if (!message.trim() || !selectedNamespace) return;
 
     try {
       await api.enviarMensagem(selectedNamespace.idSala, message);
-
-      // Atualiza as mensagens localmente
-      const newMessage = { nick: userName, msg: message };
-      setMessages((prevMessages) => [...prevMessages, newMessage]);
-      setMessage(""); // Limpa o campo de entrada
-      console.log("Mensagem enviada:", newMessage);
+      setMessages((prev) => [...prev, { nick: userName, msg: message }]);
+      setMessage("");
     } catch (error) {
       console.error("Erro ao enviar mensagem:", error.message);
     }
   };
 
-  // Alterna a visibilidade da sidebar
   const toggleSidebar = () => {
     setIsSidebarHidden((prev) => !prev);
   };
@@ -110,6 +91,14 @@ const ChatPage = () => {
             <h1 className="text-2xl font-bold">CHATS</h1>
           </div>
           <p className="text-sm text-zinc-400">Explorar</p>
+        </div>
+
+        {/* Search Bar */}
+        <div className="p-4">
+          <Input
+            placeholder="Pesquise aqui"
+            className="bg-zinc-800 border-none text-white placeholder:text-zinc-500"
+          />
         </div>
 
         {/* Namespace List */}

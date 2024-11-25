@@ -1,0 +1,109 @@
+import axios from "axios";
+
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL || "https://chat-crng.onrender.com";
+
+// Configuração padrão do Axios
+const api = axios.create({
+  baseURL: API_BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+// Interceptador para adicionar o token em todas as requisições
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers["token"] = token;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// Funções de API
+
+// Login na API
+export const entrar = async (nick) => {
+  try {
+    const response = await api.post("/entrar", { nick });
+    console.log("Resposta da API (entrar):", response.data);
+
+    if (response.data?.resp?.token && typeof window !== "undefined") {
+      localStorage.setItem("token", response.data.resp.token);
+      localStorage.setItem("idUser", response.data.resp.idUser);
+      localStorage.setItem("nick", nick);
+    }
+    return response.data;
+  } catch (error) {
+    console.error("Erro na API (entrar):", error.response?.data || error.message);
+    throw new Error(error.response?.data?.msg || "Erro ao autenticar.");
+  }
+};
+
+// Listar salas disponíveis
+export const listarSalas = async () => {
+	try {
+	  const token = localStorage.getItem("token");
+	  const nick = localStorage.getItem("nick");
+	  const idUser = localStorage.getItem("idUser");
+  
+	  if (!token || !nick || !idUser) {
+		throw new Error("Token, nick ou idUser ausente no localStorage.");
+	  }
+  
+	  const response = await api.get("/salas", {
+		headers: {
+		  idUser: idUser,
+		  nick: nick,
+		  token: token,
+		},
+	  });
+  
+	  console.log("Resposta da API (listarSalas):", response.data); // Log para depuração
+	  return response.data?.resp || [];
+	} catch (error) {
+	  console.error("Erro ao listar salas:", error.response?.data || error.message);
+	  return []; // Retorna array vazio em caso de erro
+	}
+  };
+  
+  
+
+// Listar mensagens de uma sala
+export const listarMensagens = async (idSala, timestamp) => {
+  try {
+    const response = await api.get(`/sala/mensagens`, {
+      params: { idSala, timestamp },
+    });
+    console.log("Mensagens retornadas:", response.data);
+    return response.data?.msgs || [];
+  } catch (error) {
+    console.error("Erro ao listar mensagens:", error.response?.data || error.message);
+    throw new Error(error.response?.data?.msg || "Erro ao listar mensagens.");
+  }
+};
+
+// Enviar mensagem para uma sala
+export const enviarMensagem = async (idSala, msg) => {
+  try {
+    const response = await api.post(`/sala/mensagem?idsala=${idSala}`, { msg });
+    console.log("Mensagem enviada:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao enviar mensagem:", error.response?.data || error.message);
+    throw new Error(error.response?.data?.msg || "Erro ao enviar mensagem.");
+  }
+};
+
+// Exportar todas as funções
+const apiServices = {
+  entrar,
+  listarSalas,
+  listarMensagens,
+  enviarMensagem,
+};
+
+export default apiServices;
