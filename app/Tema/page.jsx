@@ -15,7 +15,7 @@ import { MdSportsHandball } from "react-icons/md";
 
 const Tema = () => {
   const [userName, setUserName] = useState("");
-  const chats = "/ChatPage"
+  const chats = "/Chat"
 
   useEffect(() => {
     // Recuperar o nome do localStorage ao carregar a página

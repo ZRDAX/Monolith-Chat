@@ -22,13 +22,13 @@ const ChatPage = () => {
         const nick = localStorage.getItem("nick");
         if (!nick) {
           console.error("Usuário não autenticado.");
-          window.location.href = "/login";
+          window.location.href = "/Login";
           return;
         }
         setUserName(nick);
 
         const salas = await api.listarSalas();
-        console.log("Salas retornadas da API:", salas);
+        console.log("Salas retornadas da API: ", salas);
 
         if (Array.isArray(salas) && salas.length > 0) {
           setNamespaces(
@@ -50,9 +50,12 @@ const ChatPage = () => {
 
   // Seleciona uma sala e carrega as mensagens
   const handleSelectNamespace = async (namespace) => {
+    const timestamp = await api.entrarSala(namespace.idSala);
     setSelectedNamespace(namespace);
+    console.log(namespace);
     try {
-      const mensagens = await api.listarMensagens(namespace.idSala, Date.now());
+      console.log("oiiiiiiiiiiiiiiii")
+      const mensagens = await api.listarMensagens(namespace.idSala, timestamp);
       console.log("Mensagens carregadas:", mensagens);
 
       const formattedMessages = mensagens.map((msg) => ({
